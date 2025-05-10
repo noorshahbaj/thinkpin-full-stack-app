@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <RouterView />
+  My Images
 </template>
 
 <style scoped></style>
