@@ -11,7 +11,7 @@ const routes = [
     path: "/",
     component: DefaultLayout,
     children: [
-      { path: "/", name: "home", component: Home },
+      { path: "/", name: "Home", component: Home },
       { path: "/images", name: "MyImages", component: MyImages },
     ],
   },
