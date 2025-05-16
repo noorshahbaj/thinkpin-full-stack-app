@@ -81,6 +81,8 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { RouterLink, RouterView } from 'vue-router'
+import useUserStore from '../store/user'
+import router from '../router';
 
 const user = {
   name: 'Tom Cook',
@@ -93,7 +95,8 @@ const navigation = [
   { name: 'My Images', to: { name: 'MyImages' } },
 ]
 function logout() {
-  console.log('logout')
+  const userStore = useUserStore();
+  userStore.logout().then(() => router.push('/login'));
 }
 </script>
 
