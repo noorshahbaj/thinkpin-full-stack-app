@@ -5,27 +5,13 @@ import router from "../router";
 const useUserStore = defineStore("user", {
   state: () => ({
     user: null,
-    isLoading: false,
   }),
   actions: {
-    async fetchUser() {
-      if (this.isLoading) return; // Prevent multiple simultaneous fetches
-
-      this.isLoading = true;
-      try {
-        const response = await axiosClient.get("/api/user");
-        this.user = response.data;
-        return response.data;
-      } catch (error) {
-        if (error.response?.status === 401) {
-          this.user = null;
-        } else {
-          console.error("User fetch error:", error);
-        }
-        throw error;
-      } finally {
-        this.isLoading = false;
-      }
+    fetchUser() {
+      return axiosClient.get("/api/user").then(({ data }) => {
+        console.log(data);
+        this.user = data;
+      });
     },
     async logout() {
       try {
